@@ -77,4 +77,7 @@ main section.warning {
 text-align: center;
 }
 
-
+.warning {
+  display: flex-column;
+  justify-content: center;
+}
