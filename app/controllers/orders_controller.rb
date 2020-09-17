@@ -2,6 +2,11 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+
+   @line_items = LineItem.where(order: @order.id)
+  #  @line_items.map{|y| puts "#{y[:quantity]}, #{y.product.name}" }
+  #  enhanced_cart.map{|y| puts "#{y[:quantity]}, #{y[:product].name}" }
+
   end
 
   def create
