@@ -9,6 +9,13 @@
 
       <%= bootstrap_form_tag url: '/login' do |f| %>
 
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented logging-in:</strong><br>       
+            <%= msg %>
+          </div>
+        <% end %>     
+
         <div class="form-group">
           <%= f.email_field :email%>
 				</div>
