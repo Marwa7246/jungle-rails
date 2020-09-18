@@ -1,17 +1,16 @@
 <section class="cart-show">
 
-<%if cart.size == 0%>
-<section class="warning">
-<section>
-  <h2 class="alert alert-warning" role="alert">My Cart is empty. Go back to
-  <%= link_to 'Home', :root, class:"alert-link"%> to continue shopping
-  </h2>
-  </section>
+<%if empty?%>
+  <section class="empty">
     <section>
-
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+      <h2 class="alert alert-info" role="alert">My Cart is empty. Go back to
+      <%= link_to 'Home', :root, class:"alert-link"%> to continue shopping
+      </h2>
     </section>
     <section>
+    <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-info' %>
+    </section>
+  <section>
 
 
   <% else %>
