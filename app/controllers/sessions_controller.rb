@@ -13,7 +13,11 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
     # If user's login doesn't work, send them back to the login form.
-      redirect_to '/login', alert: 'Invalid Username/password! Please Try again'
+    @error_login='Invalid Username/password!'
+    
+    #puts @error_login
+    #raise @error_login
+      render :new, alert: 'Invalid Username/password! Please Try again'
     end
   end
 
