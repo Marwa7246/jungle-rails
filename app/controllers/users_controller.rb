@@ -7,8 +7,6 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
      
-      puts @user.id
-      puts @user.first_name
       redirect_to [:root], notice: 'Account created successfully'
     else
       flash[:error] = 'An error occured!'
