@@ -7,9 +7,10 @@
 
   <div class="row">
     <div class="col-sm-6 col-sm-offset-1">
+
       <%= form_for @user do |form| %>
 
-      <% if form.object.errors.any? %>
+        <% if form.object.errors.any? %>
           <div class="alert alert-danger">
             <strong>The following errors prevented saving:</strong>
             <ul>
@@ -18,9 +19,7 @@
               <% end %>
             </ul>
           </div>
-        <% end %>
-
-        
+        <% end %>        
       
         <div class="form-group">
           <%= form.label :first_name %>
@@ -52,7 +51,7 @@
         </div>
       <% end %>
       <div class="well">
-				Already have an account? <%= link_to 'Login Here', '/login' %>
+				Already have an account? <%= link_to 'Login Here', :new_session %>
 			</div>
     </div>
   </div>

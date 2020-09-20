@@ -31,11 +31,12 @@
         </li>
         
           <% if current_user %>
+          
             <li> <a><%=  "Signed in as: #{current_user.email}"%> </a></li> 
-            <li><%= link_to "Logout", '/logout' %></li>
+            <li><%= link_to "Logout", "/sessions/:#{current_user.id}", method: :Delete %></li>
           <% else %>
-            <li><%= link_to 'Login', '/login' %></li>
-            <li><%= link_to 'Signup', '/signup' %></li>
+            <li><%= link_to 'Login', :new_session %></li>
+            <li><%= link_to 'Signup', :new_user %></li>
           <% end %>
         
 
