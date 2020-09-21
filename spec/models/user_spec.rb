@@ -58,7 +58,7 @@ RSpec.describe User, type: :model do
 
     end
       
-    describe '#password' do
+    describe '#password missing' do
       it 'generate an error' do
         @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password_confirmation: '123456789')
         expect(@user).to_not be_valid
@@ -66,20 +66,28 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe '#password_confirmation' do
+    describe '#password_confirmation missing' do
       it 'generate an error' do
         @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password: '123456789')
         expect(@user).to_not be_valid
+        puts @user.errors.full_messages
         expect(@user.errors.full_messages).to include("Password confirmation can't be blank")
       end
     end
 
-    describe '#password_confirmation & #password' do
+    describe '#password_confirmation & #password do not match' do
       it 'generate an error' do
         @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password: '123456789', password_confirmation: '12345678910')
         expect(@user).to_not be_valid
-        puts @user.errors.full_messages
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+    end
+
+    describe '#password too short' do
+      it 'generate an error' do
+        @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password: '1234', password_confirmation: '1234')
+        expect(@user).to_not be_valid
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 8 characters)")
       end
     end
 
