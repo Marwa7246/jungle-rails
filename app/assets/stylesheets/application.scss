@@ -19,3 +19,8 @@ body {
 form.button_to {
   display: inline;
 }
+
+.no-hover {
+  pointer-events: none;
+
+}
