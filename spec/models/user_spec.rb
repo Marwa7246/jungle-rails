@@ -70,7 +70,6 @@ RSpec.describe User, type: :model do
       it 'generate an error' do
         @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password: '123456789')
         expect(@user).to_not be_valid
-        puts @user.errors.full_messages
         expect(@user.errors.full_messages).to include("Password confirmation can't be blank")
       end
     end
@@ -93,4 +92,40 @@ RSpec.describe User, type: :model do
 
     
   end
+
+  describe '.authenticate_with_credentials' do
+    describe 'valid username and password' do
+      it 'login successfully' do
+        @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password: '123456789', password_confirmation: '123456789')
+        @user.save!      
+        params = {email: 'test@test.com', password:'123456789'}        
+        @current_user = User.authenticate_with_credentials(params[:email], params[:password])
+        expect(@current_user).to_not be_nil      
+      end
+    end
+
+    describe 'invalid password' do
+      it 'return nil' do
+        @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password: '123456789', password_confirmation: '123456789')
+        @user.save!
+        params = {email: 'test@test.com', password:'12300000789'}        
+        @current_user = User.authenticate_with_credentials(params[:email], params[:password])
+        expect(@current_user).to be_nil        
+      end
+    end
+
+    describe 'invalid username' do
+      it 'return nil' do
+        @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password: '123456789', password_confirmation: '123456789')
+        @user.save!
+        params = {email: 'test123@test.com', password:'123456789'}        
+        @current_user = User.authenticate_with_credentials(params[:email], params[:password])
+        expect(@current_user).to be_nil        
+      end
+    end    
+
+
+
+  end
+
 end
