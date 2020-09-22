@@ -124,7 +124,25 @@ RSpec.describe User, type: :model do
       end
     end    
 
+    describe 'email is case insensitive' do
+      it 'login' do
+        @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password: '123456789', password_confirmation: '123456789')
+        @user.save!
+        params = {email: 'Test@test.CoM', password:'123456789'}        
+        @current_user = User.authenticate_with_credentials(params[:email], params[:password])
+        expect(@current_user).to_not be_nil        
+      end
+    end  
 
+    describe 'remove trailing and leading white spaces' do
+      it 'login successfully' do
+        @user = User.new(first_name: 'xxx', last_name: 'yyy', email: 'test@test.com', password: '123456789', password_confirmation: '123456789')
+        @user.save!
+        params = {email: '  Test@test.CoM  ', password:'123456789'}        
+        @current_user = User.authenticate_with_credentials(params[:email], params[:password])
+        expect(@current_user).to_not be_nil        
+      end
+    end  
 
   end
 
