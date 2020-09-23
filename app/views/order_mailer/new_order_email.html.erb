@@ -4,13 +4,21 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @order.email %></h1>
+    <h4>Hello, thank you for your order with Jungle.com! </h4>
     <p>
-      You have successfully made an order.<br>
+      Here is the details of your order:
     </p>
-    <p>
-      To login to the site, just follow this link: .
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <hr>        
+
+      <ul>
+        <% @line_items.each do |line_item| %>
+          <li>
+            <p> <strong><%= line_item.product.name %></strong>, Quantity: <%=line_item.quantity.to_i %></p>
+          </li>
+        <% end %>
+      </ul>
+
+    <p> <strong>ORDER TOTAL:</strong>   <%= humanized_money_with_symbol @order.total_cents / 100.0 %></p>
+    <p>Hope to see you again and have a great day!</p>
   </body>
 </html>
