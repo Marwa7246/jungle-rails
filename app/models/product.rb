@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true
   validates :category, presence: true
   
+  #method to add a sold-out badge
   def sold_out?
     self.quantity < 1
   end

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
+  # after signup, let user login and send him a welcome mail
   def create
     @user = User.new(user_params)
       if @user.save

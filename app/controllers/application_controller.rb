@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+    #### method to set the user either nil of to have avalue if logged in in each session
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
@@ -15,6 +16,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart
 
+  
   def enhanced_cart
     @enhanced_cart ||= Product.where(id: cart.keys).map {|product| { product:product, quantity: cart[product.id.to_s] } }
   end
