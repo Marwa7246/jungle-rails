@@ -4,6 +4,9 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
    @line_items = LineItem.where(order: @order.id)
+   OrderMailer.new_order_email(@order).deliver_now
+   #raise @line_items.inspect
+
   #  @line_items.map{|y| puts "#{y[:quantity]}, #{y.product.name}" }
   #  enhanced_cart.map{|y| puts "#{y[:quantity]}, #{y[:product].name}" }
 
