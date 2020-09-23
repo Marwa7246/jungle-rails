@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: '"no-reply@jungle.com" <no-reply@jungle.com>',
+  default from: 'no-reply@jungle.com',
   return_path: 'no-reply@jungle.com'
 
   
