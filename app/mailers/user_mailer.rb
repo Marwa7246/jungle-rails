@@ -1,10 +1,6 @@
-class UserMailer < ActionMailer::Base
- default(
-
-   from: "<no-reply@jungle.com>",
-   reply_to: "<no-reply@jungle.com>"
-
-)
+class UserMailer < ApplicationMailer
+  default from: '"no-reply@jungle.com" <no-reply@jungle.com>',
+  return_path: 'no-reply@jungle.com'
 
   
   def welcome_email(user)
