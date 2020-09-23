@@ -20,8 +20,10 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
   visit root_path
   expect(page).to have_css 'article.product', count: 10
   first(:link, 'Details').click
-  expect(page).to have_css 'article.product-details'
-  puts page.html
+  #sleep(0.2)  
+  find('article.product-detail') #wait until page loaded=== same as sleep
+  #puts page.html
+  expect(page).to have_css 'article.product-detail'
   save_screenshot('product_detail.png')
   end
 

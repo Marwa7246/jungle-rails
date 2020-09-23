@@ -15,7 +15,7 @@ RSpec.feature "UserLogins", type: :feature, js: true do
     visit root_path
     click_link 'Login'
     sleep(0.2)
-    puts page.html
+    #puts page.html
     save_screenshot('login_form.png')
     fill_in 'Email', with: 'test@test.com'
     fill_in 'Password', with: '123456789'
@@ -25,11 +25,5 @@ RSpec.feature "UserLogins", type: :feature, js: true do
     save_screenshot('login_form3.png')
     expect(page).to have_text 'test@test.com'
     expect(page).to have_link 'Logout' 
- 
-
-
-
-
-
   end 
 end

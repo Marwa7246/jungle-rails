@@ -20,7 +20,7 @@ RSpec.feature "AddToCarts", type: :feature, js: true do
     expect(page).to have_text 'My Cart (0)'
     save_screenshot('add_to_cart_before.png')
     first(:button, 'Add').click
-    puts page.html
+    #puts page.html
     save_screenshot('add_to_cart_after.png')
     expect(page).to have_text 'My Cart (1)'
     
