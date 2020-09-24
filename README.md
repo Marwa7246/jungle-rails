@@ -2,6 +2,12 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+## Final Product
+
+!["screenshot of jungle home page"](https://github.com/Marwa7246/jungle-rails/blob/master/docs/home-page.png)
+!["screenshot of admin products view"](https://github.com/Marwa7246/jungle-rails/blob/master/docs/admin-product-view.png)
+!["screenshot of shopping cart"](https://github.com/Marwa7246/jungle-rails/blob/master/docs/shopping-cart.png)
+!["screenshot of sign-up form"](https://github.com/Marwa7246/jungle-rails/blob/master/docs/signup-form.png)
 
 ## Setup
 
@@ -25,3 +31,8 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
 * PostgreSQL 9.x
 * Stripe
+* Rspec
+* capybara
+* data_base_cleaner
+* poltergeist
+
