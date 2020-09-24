@@ -2,6 +2,8 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+The app sends a welcome email to the user upon signing-up. Also it sends an order receipt upon completing an order, which ist the total as well as each line item in the order. The app is tested using rspec and capybara.
+
 ## Final Product
 
 !["screenshot of jungle home page"](https://github.com/Marwa7246/jungle-rails/blob/master/docs/home-page.png)
