@@ -9,6 +9,16 @@ class ReviewsController < ApplicationController
       redirect_to product_path(@product)
 
     end
+    # byebug
+  end
+
+  def destroy
+    @product = Product.find(params[:product_id])
+    @review = @product.reviews.find(params[:id])
+    @review.destroy
+    redirect_to [:root]
+
+
     byebug
   end
 
