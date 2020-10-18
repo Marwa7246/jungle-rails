@@ -25,6 +25,28 @@
         </dl>
       </div>
     </div>
+    <div>Reviews</div>
+    <ul>
+    <% @reviews.each do |review| %>
+    <li><%= review.description %></li>
+    <% end %>
+    </ul>
+
+ 
+<h2>Add a review:</h2>
+<%= form_for([@product, @product.reviews.build]) do |f| %>
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :rating %><br>
+    <%= f.select :rating, [1, 2, 3, 4, 5]%>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
   </article>
 
