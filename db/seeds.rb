@@ -132,5 +132,31 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+5.times do 
+    User.create!({
+	first_name: Faker::Name.first_name,
+	last_name: Faker::Name.last_name,
+	password: 'password12345678',
+	password_confirmation: 'password12345678',
+	email: Faker::Internet.email
+	 })
+end
+	 
+5.times do 
+	Review.create!({
+		rating: Faker::Number.between(1,5),
+		description: Faker::Hipster.paragraph(2),
+		product_id: 1,
+		user_id: Faker::Number.between(1,5)
+	})
+end
 
+5.times do 
+	Review.create!({
+		rating: Faker::Number.between(1,5),
+		description: Faker::Hipster.paragraph(2),
+		product_id: 12,
+		user_id: Faker::Number.between(1,5)
+	})
+end
 puts "DONE!"
